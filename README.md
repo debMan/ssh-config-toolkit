@@ -7,6 +7,14 @@ All-in-one editing support for SSH configuration files in VS Code. This is a for
 
 It keeps the reliable, standalone highlighting of the first and the language-intelligence features of the second, with the bugs fixed and several features added.
 
+## Installation
+
+Install the [SSH Config Pro](https://github.com/debMan/ssh-config-pro) extension from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=debman.ssh-config-pro), or from the cli:
+
+```shell
+code --install-extension debman.ssh-config-pro
+```
+
 ## Features
 
 - **Client *and* server configs** — full support for both `ssh_config` (client) and `sshd_config` (the SSH **server** daemon), each with its own grammar and its own directive set, so client-only and server-only keywords are highlighted, completed, and linted correctly.
@@ -55,8 +63,8 @@ node scripts/update-sshd.mjs                # server: fetch latest sshd_config.5
 
 ## Install the packaged build
 
-1. In VS Code open the Extensions view, click the `…` menu → **Install from VSIX…**, and choose `ssh-config-pro-1.2.0.vsix`.
-   (Or from a terminal: `code --install-extension ssh-config-pro-1.2.0.vsix`.)
+1. In VS Code open the Extensions view, click the `…` menu → **Install from VSIX…**, and choose `ssh-config-pro-*.vsix`.
+   (Or from a terminal: `code --install-extension ssh-config-pro-*.vsix`.)
 2. Open your `~/.ssh/config` — highlighting, hover, completion, and linting activate automatically.
 
 ## Build from source
@@ -70,4 +78,4 @@ npm run package    # produce the .vsix (requires @vscode/vsce)
 
 ## License
 
-MIT. Directive descriptions in `data/ssh-options.json` derive from OpenSSH documentation; see `data/OPTIONS-LICENSE`.
+[MIT](https://github.com/debMan/ssh-config-pro/blob/main/LICENSE). Directive descriptions in [`data/ssh-options.json`](https://github.com/debMan/ssh-config-pro/blob/main/data/ssh-options.json) derive from OpenSSH documentation; see [`data/OPTIONS-LICENSE`](https://github.com/debMan/ssh-config-pro/blob/main/data/OPTIONS-LICENSE).

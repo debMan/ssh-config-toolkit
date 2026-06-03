@@ -2,7 +2,7 @@
   "name": "ssh-config-pro",
   "displayName": "SSH Config Pro",
   "description": "All-in-one SSH config support: standalone syntax highlighting (any path), hover docs, keyword autocompletion, a configurable keyword linter, formatting, and Include-file links. No other extension required.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "publisher": "debman",
   "license": "MIT",
   "icon": "images/icon.png",
