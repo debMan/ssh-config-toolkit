@@ -1,0 +1,384 @@
+{
+  "usepam": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "pamservicename": {
+    "type": "enum",
+    "values": [
+      "inet",
+      "inet6",
+      "any"
+    ]
+  },
+  "badoption": {
+    "type": "enum",
+    "values": [
+      "inet",
+      "inet6",
+      "any"
+    ]
+  },
+  "port": {
+    "type": "integer",
+    "min": 1,
+    "max": 65535
+  },
+  "logingracetime": {
+    "type": "enum",
+    "values": [
+      "inet",
+      "inet6",
+      "any"
+    ]
+  },
+  "listenaddress": {
+    "type": "enum",
+    "values": [
+      "inet",
+      "inet6",
+      "any"
+    ]
+  },
+  "addressfamily": {
+    "type": "enum",
+    "values": [
+      "inet",
+      "inet6",
+      "any"
+    ]
+  },
+  "permitrootlogin": {
+    "type": "enum",
+    "values": [
+      "prohibit-password",
+      "without-password",
+      "forced-commands-only",
+      "yes",
+      "no"
+    ]
+  },
+  "ignorerhosts": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no",
+      "shosts-only"
+    ]
+  },
+  "ignoreuserknownhosts": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "hostbasedauthentication": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "hostbasedusesnamefrompacketonly": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "pubkeyauthentication": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "pubkeyauthoptions": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "kerberosauthentication": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "kerberosorlocalpasswd": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "kerberosticketcleanup": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "kerberosgetafstoken": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "gssauthentication": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "gsscleanupcreds": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "gssdelegatecreds": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "gssstrictacceptor": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "passwordauthentication": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "kbdinteractiveauthentication": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "printmotd": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "printlastlog": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "x11forwarding": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "x11displayoffset": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "x11uselocalhost": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "permittty": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "permituserrc": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "strictmodes": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "tcpkeepalive": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "permitemptypasswords": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "permituserenvironment": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "delayed",
+      "no"
+    ]
+  },
+  "compression": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "delayed",
+      "no"
+    ]
+  },
+  "gatewayports": {
+    "type": "enum",
+    "values": [
+      "clientspecified",
+      "yes",
+      "no"
+    ]
+  },
+  "usedns": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "syslogfacility": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "all",
+      "no",
+      "remote",
+      "local"
+    ]
+  },
+  "loglevel": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "all",
+      "no",
+      "remote",
+      "local"
+    ]
+  },
+  "logverbose": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "all",
+      "no",
+      "remote",
+      "local"
+    ]
+  },
+  "allowtcpforwarding": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "all",
+      "no",
+      "remote",
+      "local"
+    ]
+  },
+  "allowstreamlocalforwarding": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "all",
+      "no",
+      "remote",
+      "local"
+    ]
+  },
+  "allowagentforwarding": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "disableforwarding": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "authenticationmethods": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "streamlocalbindmask": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "streamlocalbindunlink": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "fingerprinthash": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "exposeauthinfo": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "refuseconnection": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  }
+}

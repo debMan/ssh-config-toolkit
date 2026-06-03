@@ -1,0 +1,17 @@
+[
+  "AskPassGUI",
+  "ChallengeResponseAuthentication",
+  "Cipher",
+  "CompressionLevel",
+  "GSSAPIClientIdentity",
+  "GSSAPIKeyExchange",
+  "GSSAPIRenewalForcesRekey",
+  "GSSAPIServerIdentity",
+  "GSSAPITrustDns",
+  "HostbasedKeyTypes",
+  "KeychainIntegration",
+  "Protocol",
+  "RSAAuthentication",
+  "RhostsRSAAuthentication",
+  "UsePrivilegedPort"
+]

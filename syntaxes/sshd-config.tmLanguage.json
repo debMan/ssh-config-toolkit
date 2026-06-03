@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "SSHD Config",
+  "scopeName": "source.sshd-config",
+  "patterns": [
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#match-line"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#strings"
+    }
+  ],
+  "repository": {
+    "comment": {
+      "patterns": [
+        {
+          "name": "comment.line.number-sign.sshd-config",
+          "begin": "^([\\s]+)?((#)(?:\\s*(?=\\s|$))?)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.whitespace.comment.leading.sshd-config"
+            },
+            "2": {
+              "name": "comment.line.number-sign.sshd-config"
+            },
+            "3": {
+              "name": "punctuation.definition.comment.sshd-config"
+            }
+          },
+          "end": "(?=$)"
+        }
+      ]
+    },
+    "match-line": {
+      "match": "(?i)^(\\s*)(Match)(\\s+)(.+)$",
+      "captures": {
+        "2": {
+          "name": "keyword.other.definition.match.sshd-config"
+        },
+        "4": {
+          "name": "entity.name.function.target.sshd-config"
+        }
+      }
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.sshd-config",
+          "match": "(?i)^\\s*(AcceptEnv|AddressFamily|AllowAgentForwarding|AllowGroups|AllowStreamLocalForwarding|AllowTcpForwarding|AllowUsers|AuthenticationMethods|AuthorizedKeysCommand|AuthorizedKeysCommandUser|AuthorizedKeysFile|AuthorizedKeysFile2|AuthorizedPrincipalsCommand|AuthorizedPrincipalsCommandUser|AuthorizedPrincipalsFile|Banner|CASignatureAlgorithms|ChallengeResponseAuthentication|ChannelTimeout|ChrootDirectory|Ciphers|ClientAliveCountMax|ClientAliveInterval|Compression|DenyGroups|DenyUsers|DisableForwarding|ExposeAuthInfo|FingerprintHash|ForceCommand|GatewayPorts|GSSAPIAuthentication|GSSAPICleanupCredentials|GSSAPIDelegateCredentials|GSSAPIStrictAcceptorCheck|HostbasedAcceptedAlgorithms|HostbasedAuthentication|HostbasedUsesNameFromPacketOnly|HostCertificate|HostKey|HostKeyAgent|HostKeyAlgorithms|IgnoreRhosts|IgnoreUserKnownHosts|Include|IPQoS|KbdInteractiveAuthentication|KerberosAuthentication|KerberosGetAFSToken|KerberosOrLocalPasswd|KerberosTgtPassing|KerberosTicketCleanup|KexAlgorithms|KeyRegenerationInterval|ListenAddress|LoginGraceTime|LogLevel|LogVerbose|MACs|MaxAuthTries|MaxSessions|MaxStartups|ModuliFile|PAMServiceName|PasswordAuthentication|PermitEmptyPasswords|PermitListen|PermitOpen|PermitRootLogin|PermitTTY|PermitTunnel|PermitUserEnvironment|PermitUserRC|PerSourceMaxStartups|PerSourceNetBlockSize|PerSourcePenalties|PerSourcePenaltyExemptList|PidFile|Port|PrintLastLog|PrintMotd|Protocol|PubkeyAcceptedAlgorithms|PubkeyAuthentication|PubkeyAuthOptions|RDomain|RefuseConnection|RekeyLimit|RequiredRSASize|RevokedKeys|RhostsRSAAuthentication|RSAAuthentication|SecurityKeyProvider|ServerKeyBits|SetEnv|ShowPatchLevel|SshdAuthPath|SshdSessionPath|StreamLocalBindMask|StreamLocalBindUnlink|StrictModes|Subsystem|SyslogFacility|TCPKeepAlive|TrustedUserCAKeys|UnusedConnectionTimeout|UseDNS|UseLogin|UsePAM|UsePrivilegeSeparation|VersionAddendum|X11DisplayOffset|X11Forwarding|X11UseLocalhost|XAuthLocation)\\b"
+        }
+      ]
+    },
+    "numbers": {
+      "name": "constant.numeric.sshd-config",
+      "match": "\\b\\d+\\b"
+    },
+    "strings": {
+      "name": "string.quoted.double.sshd-config",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.sshd-config",
+          "match": "\\\\."
+        }
+      ]
+    }
+  }
+}

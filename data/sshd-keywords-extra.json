@@ -1,0 +1,15 @@
+[
+  "AuthorizedKeysFile2",
+  "ChallengeResponseAuthentication",
+  "KbdInteractiveAuthentication",
+  "KerberosGetAFSToken",
+  "KerberosTgtPassing",
+  "KeyRegenerationInterval",
+  "Protocol",
+  "RhostsRSAAuthentication",
+  "RSAAuthentication",
+  "ServerKeyBits",
+  "ShowPatchLevel",
+  "UseLogin",
+  "UsePrivilegeSeparation"
+]

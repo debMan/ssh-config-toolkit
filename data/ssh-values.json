@@ -1,0 +1,584 @@
+{
+  "forwardx11": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "forwardx11trusted": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "gatewayports": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "exitonforwardfailure": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "passwordauthentication": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "kbdinteractiveauthentication": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "challengeresponseauthentication": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "skeyauthentication": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "tisauthentication": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "pubkeyauthentication": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no",
+      "unbound",
+      "host-bound"
+    ]
+  },
+  "dsaauthentication": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no",
+      "unbound",
+      "host-bound"
+    ]
+  },
+  "hostbasedauthentication": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "gssapiauthentication": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "gssapidelegatecredentials": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "batchmode": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "checkhostip": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "verifyhostkeydns": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no",
+      "ask"
+    ]
+  },
+  "stricthostkeychecking": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no",
+      "ask",
+      "off",
+      "accept-new"
+    ]
+  },
+  "compression": {
+    "type": "enum",
+    "values": [
+      "yes",
+      "no"
+    ]
+  },
+  "tcpkeepalive": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "keepalive": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "nohostauthenticationforlocalhost": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "loglevel": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "syslogfacility": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "logverbose": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "localforward": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "remoteforward": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "dynamicforward": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "permitremoteopen": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "clearallforwardings": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "host": {
+    "type": "enum",
+    "values": [
+      "inet",
+      "inet6",
+      "any"
+    ]
+  },
+  "match": {
+    "type": "enum",
+    "values": [
+      "inet",
+      "inet6",
+      "any"
+    ]
+  },
+  "escapechar": {
+    "type": "enum",
+    "values": [
+      "inet",
+      "inet6",
+      "any"
+    ]
+  },
+  "addressfamily": {
+    "type": "enum",
+    "values": [
+      "inet",
+      "inet6",
+      "any"
+    ]
+  },
+  "enablesshkeysign": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "identitiesonly": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "controlmaster": {
+    "type": "enum",
+    "values": [
+      "true",
+      "yes",
+      "false",
+      "no",
+      "auto",
+      "ask",
+      "autoask"
+    ]
+  },
+  "controlpersist": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "hashknownhosts": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "tunnel": {
+    "type": "enum",
+    "values": [
+      "ethernet",
+      "point-to-point",
+      "true",
+      "yes",
+      "false",
+      "no"
+    ]
+  },
+  "permitlocalcommand": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "visualhostkey": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "include": {
+    "type": "enum",
+    "values": [
+      "true",
+      "yes",
+      "false",
+      "no",
+      "force",
+      "auto"
+    ]
+  },
+  "ipqos": {
+    "type": "enum",
+    "values": [
+      "true",
+      "yes",
+      "false",
+      "no",
+      "force",
+      "auto"
+    ]
+  },
+  "requesttty": {
+    "type": "enum",
+    "values": [
+      "true",
+      "yes",
+      "false",
+      "no",
+      "force",
+      "auto"
+    ]
+  },
+  "sessiontype": {
+    "type": "enum",
+    "values": [
+      "none",
+      "subsystem",
+      "default"
+    ]
+  },
+  "stdinnull": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "forkafterauthentication": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "proxyusefdpass": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "canonicaldomains": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no",
+      "always"
+    ]
+  },
+  "canonicalizepermittedcnames": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no",
+      "always"
+    ]
+  },
+  "canonicalizehostname": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no",
+      "always"
+    ]
+  },
+  "canonicalizefallbacklocal": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "streamlocalbindmask": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "streamlocalbindunlink": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "revokedhostkeys": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no",
+      "ask"
+    ]
+  },
+  "fingerprinthash": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no",
+      "ask"
+    ]
+  },
+  "updatehostkeys": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no",
+      "ask"
+    ]
+  },
+  "addkeystoagent": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "identityagent": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "enableescapecommandline": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no"
+    ]
+  },
+  "warnweakcrypto": {
+    "type": "enum",
+    "values": [
+      "true",
+      "false",
+      "yes",
+      "no",
+      "no-pq-kex"
+    ]
+  },
+  "port": {
+    "type": "integer",
+    "min": 1,
+    "max": 65535
+  }
+}

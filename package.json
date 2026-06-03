@@ -1,0 +1,172 @@
+{
+  "name": "ssh-config-pro",
+  "displayName": "SSH Config Pro",
+  "description": "All-in-one SSH config support: standalone syntax highlighting (any path), hover docs, keyword autocompletion, a configurable keyword linter, formatting, and Include-file links. No other extension required.",
+  "version": "1.2.0",
+  "publisher": "debman",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Formatters",
+    "Linters"
+  ],
+  "keywords": [
+    "ssh",
+    "ssh-config",
+    "ssh config",
+    "ssh_config",
+    "syntax highlighting",
+    "remote development"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/debman/ssh-config-pro"
+  },
+  "main": "./out/extension.js",
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "activationEvents": [
+    "onLanguage:ssh-config",
+    "onLanguage:sshd-config"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "ssh-config",
+        "aliases": [
+          "SSH Config",
+          "ssh-config",
+          "ssh_config"
+        ],
+        "filenames": [
+          "config",
+          "ssh_config",
+          "ssh_config.local"
+        ],
+        "filenamePatterns": [
+          "**/.ssh/config",
+          "**/.ssh/config.d/*",
+          "**/.ssh/*.conf",
+          "**/ssh/ssh_config",
+          "**/ssh/ssh_config.d/*",
+          "/etc/ssh/ssh_config",
+          "/etc/ssh/ssh_config.d/*"
+        ],
+        "firstLine": "^\\s*(Host|Match|Include|HostName|IdentityFile|ProxyJump|ProxyCommand)\\b",
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "sshd-config",
+        "aliases": [
+          "SSHD Config",
+          "sshd-config",
+          "sshd_config"
+        ],
+        "filenames": [
+          "sshd_config"
+        ],
+        "filenamePatterns": [
+          "**/ssh/sshd_config",
+          "**/sshd_config.d/*",
+          "/etc/ssh/sshd_config",
+          "/etc/ssh/sshd_config.d/*"
+        ],
+        "firstLine": "^\\s*(PermitRootLogin|Subsystem|ListenAddress|AuthorizedKeysFile|HostKey|AllowUsers|AllowGroups|MaxStartups|PasswordAuthentication)\\b",
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ssh-config",
+        "scopeName": "source.ssh-config",
+        "path": "./syntaxes/ssh-config.tmLanguage.json"
+      },
+      {
+        "language": "sshd-config",
+        "scopeName": "source.sshd-config",
+        "path": "./syntaxes/sshd-config.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "ssh-config-pro.openUserConfig",
+        "title": "SSH Config: Open User Configuration (~/.ssh/config)"
+      },
+      {
+        "command": "ssh-config-pro.setLanguageMode",
+        "title": "SSH Config: Treat Current File as SSH Config (client)"
+      },
+      {
+        "command": "ssh-config-pro.setSshdLanguageMode",
+        "title": "SSH Config: Treat Current File as SSHD Config (server)"
+      },
+      {
+        "command": "ssh-config-pro.fixCasing",
+        "title": "SSH Config: Fix Directive Casing"
+      }
+    ],
+    "configuration": {
+      "title": "SSH Config Pro",
+      "properties": {
+        "sshConfigPro.format.indentSize": {
+          "type": "integer",
+          "default": 2,
+          "minimum": 0,
+          "markdownDescription": "Number of spaces used to indent directives under each `Host`/`Match` block when formatting."
+        },
+        "sshConfigPro.lint.enabled": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable the keyword linter, which flags unknown SSH config directives."
+        },
+        "sshConfigPro.lint.severity": {
+          "type": "string",
+          "enum": [
+            "error",
+            "warning",
+            "information",
+            "hint"
+          ],
+          "default": "warning",
+          "markdownDescription": "Diagnostic severity used for unknown directives reported by the keyword linter."
+        },
+        "sshConfigPro.lint.allowedKeywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "markdownDescription": "Extra directive names the linter should treat as valid (e.g. custom or newer keywords), in addition to the built-in list."
+        },
+        "sshConfigPro.fixCasing.onSave": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "On save, normalise SSH directive keywords to their canonical casing (e.g. `hOstNaME` → `HostName`), using the official OpenSSH keyword list. Only the leading directive on each line is changed; values are left untouched."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vscode/vsce": "^3.9.1",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.0"
+  }
+}
