@@ -4,6 +4,7 @@ import assert from 'node:assert'
 import { formatSshConfig } from '../out/format-core.js'
 import { directiveOf, levenshtein, closestKeyword, lintText } from '../out/lint-core.js'
 import { computeCasingEdits } from '../out/casing-core.js'
+import { validateValues } from '../out/value-core.js'
 
 let passed = 0
 function check(name, fn) {
@@ -33,6 +34,37 @@ check('inserts a blank line between blocks', () => {
 check('collapses multiple blank lines', () => {
   const out = formatSshConfig('Host a\nUser u\n\n\n\nHost b\n', 2)
   assert.strictEqual(out, 'Host a\n  User u\n\nHost b\n')
+})
+
+check('removes blank lines inside a block and re-indents what follows', () => {
+  // The reported bug: a blank line mid-block dropped indentation of later lines.
+  const input = 'Host rpi-home\n  User debman\n  Port 53042\n\nHostname revolt-rpi.local\n\nHost rpi\n  Hostname home.debman.net\n'
+  const out = formatSshConfig(input, 2)
+  assert.strictEqual(
+    out,
+    'Host rpi-home\n  User debman\n  Port 53042\n  Hostname revolt-rpi.local\n\nHost rpi\n  Hostname home.debman.net\n',
+  )
+})
+
+check('keeps a comment directly above Host attached and un-indented', () => {
+  const input = '# Raspberry Pi\nHost rpi\n  User debman\n'
+  assert.strictEqual(formatSshConfig(input, 2), '# Raspberry Pi\nHost rpi\n  User debman\n')
+})
+
+check('a comment detached by a blank introduces the next block', () => {
+  const input = 'Host a\n  User u\n\n# about b\nHost b\n  User v\n'
+  assert.strictEqual(
+    formatSshConfig(input, 2),
+    'Host a\n  User u\n\n# about b\nHost b\n  User v\n',
+  )
+})
+
+check('indents a comment that sits inside a block', () => {
+  const input = 'Host a\n  User u\n  # note about user\n  Port 22\n'
+  assert.strictEqual(
+    formatSshConfig(input, 2),
+    'Host a\n  User u\n  # note about user\n  Port 22\n',
+  )
 })
 
 // ---- directive parsing ----
@@ -149,6 +181,57 @@ check('linter flags a client directive inside a server file', () => {
   const findings = lintText('ProxyJump bastion\n', sshdKw, canonical)
   assert.strictEqual(findings.length, 1)
   assert.strictEqual(findings[0].directive, 'ProxyJump')
+})
+
+// ---- value validation ----
+const readObj = p => JSON.parse(readFileSync(new URL(p, import.meta.url)))
+const toSpecMap = obj => new Map(Object.entries(obj).map(([k, v]) => [k.toLowerCase(), v]))
+const sshVals = toSpecMap(readObj('../data/ssh-values.json'))
+const sshdVals = toSpecMap(readObj('../data/sshd-values.json'))
+
+check('value data: PermitRootLogin enum is authoritative', () => {
+  const spec = sshdVals.get('permitrootlogin')
+  assert.strictEqual(spec.type, 'enum')
+  for (const v of ['yes', 'no', 'prohibit-password', 'forced-commands-only']) {
+    assert.ok(spec.values.includes(v), `expected ${v}`)
+  }
+})
+
+check('value data: free-form/path directives are NOT validated', () => {
+  // These accept paths/times/strings and must be absent to avoid false errors.
+  for (const k of ['forwardagent', 'identityagent', 'loglevel', 'localforward', 'addkeystoagent']) {
+    assert.ok(!sshVals.has(k), `${k} must not have a strict value spec`)
+  }
+})
+
+check('flags an invalid enum value', () => {
+  const f = validateValues('PermitRootLogin maybe\n', sshdVals)
+  assert.strictEqual(f.length, 1)
+  assert.strictEqual(f[0].line, 0)
+  assert.strictEqual(f[0].startCol, 16)
+  assert.strictEqual(f[0].length, 5)
+  assert.match(f[0].message, /Invalid value "maybe" for PermitRootLogin/)
+})
+
+check('accepts valid enum values case-insensitively', () => {
+  assert.strictEqual(validateValues('PermitRootLogin NO\n', sshdVals).length, 0)
+  assert.strictEqual(validateValues('Compression yes\n', sshVals).length, 0)
+  assert.strictEqual(validateValues('StrictHostKeyChecking accept-new\n', sshVals).length, 0)
+})
+
+check('handles the = separator', () => {
+  assert.strictEqual(validateValues('Compression=yes\n', sshVals).length, 0)
+  assert.strictEqual(validateValues('Compression = bogus\n', sshVals).length, 1)
+})
+
+check('validates Port as an integer in range', () => {
+  assert.strictEqual(validateValues('Port 22\n', sshVals).length, 0)
+  assert.strictEqual(validateValues('Port notaport\n', sshVals).length, 1)
+  assert.match(validateValues('Port 70000\n', sshVals)[0].message, /exceeds the maximum/)
+})
+
+check('ignores directives without a value spec', () => {
+  assert.strictEqual(validateValues('HostName example.com\nUser bob\nForwardAgent /run/agent.sock\n', sshVals).length, 0)
 })
 
 console.log(`\nAll ${passed} tests passed.`)

@@ -114,7 +114,14 @@ function mapTokensToTables(src, tokenPrefix) {
       const all = [...body.matchAll(/multistate_ptr\s*=\s*(multistate_[a-z_]+)/g)]
       return all.length ? all[all.length - 1][1] : 'multistate_flag'
     }
-    return null // empty / fall-through / unknown
+    // A genuinely empty body is a C fall-through that inherits the next case's
+    // handling. A body that HAS code but matched none of the above does its own
+    // custom parsing (LogLevel, Host, Include, IdentityAgent, ...) and must be
+    // skipped — never inherited.
+    const hasCode = body
+      .split('\n')
+      .some(l => l.trim() !== '' && !l.trim().startsWith('/*') && !l.trim().startsWith('*'))
+    return hasCode ? 'OTHER' : null
   }
 
   const own = cases.map((c, idx) => {

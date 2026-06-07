@@ -7,7 +7,7 @@ import { isSupportedLanguage } from './utils'
 /**
  * Normalises SSH directive keyword casing (e.g. `hOstNaME` -> `HostName`) using
  * the authoritative OpenSSH keyword list. Runs automatically on save when
- * `sshConfigPro.fixCasing.onSave` is enabled (default), and can also be
+ * `sshConfigToolkit.fixCasing.onSave` is enabled (default), and can also be
  * triggered manually.
  */
 export class SSHCasingProvider {
@@ -18,7 +18,7 @@ export class SSHCasingProvider {
           return
         }
         const enabled = workspace
-          .getConfiguration('sshConfigPro.fixCasing')
+          .getConfiguration('sshConfigToolkit.fixCasing')
           .get<boolean>('onSave', true)
         if (!enabled) {
           return

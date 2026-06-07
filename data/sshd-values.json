@@ -6,43 +6,6 @@
       "no"
     ]
   },
-  "pamservicename": {
-    "type": "enum",
-    "values": [
-      "inet",
-      "inet6",
-      "any"
-    ]
-  },
-  "badoption": {
-    "type": "enum",
-    "values": [
-      "inet",
-      "inet6",
-      "any"
-    ]
-  },
-  "port": {
-    "type": "integer",
-    "min": 1,
-    "max": 65535
-  },
-  "logingracetime": {
-    "type": "enum",
-    "values": [
-      "inet",
-      "inet6",
-      "any"
-    ]
-  },
-  "listenaddress": {
-    "type": "enum",
-    "values": [
-      "inet",
-      "inet6",
-      "any"
-    ]
-  },
   "addressfamily": {
     "type": "enum",
     "values": [
@@ -91,13 +54,6 @@
     ]
   },
   "pubkeyauthentication": {
-    "type": "enum",
-    "values": [
-      "yes",
-      "no"
-    ]
-  },
-  "pubkeyauthoptions": {
     "type": "enum",
     "values": [
       "yes",
@@ -195,13 +151,6 @@
       "no"
     ]
   },
-  "x11displayoffset": {
-    "type": "enum",
-    "values": [
-      "yes",
-      "no"
-    ]
-  },
   "x11uselocalhost": {
     "type": "enum",
     "values": [
@@ -244,14 +193,6 @@
       "no"
     ]
   },
-  "permituserenvironment": {
-    "type": "enum",
-    "values": [
-      "yes",
-      "delayed",
-      "no"
-    ]
-  },
   "compression": {
     "type": "enum",
     "values": [
@@ -273,36 +214,6 @@
     "values": [
       "yes",
       "no"
-    ]
-  },
-  "syslogfacility": {
-    "type": "enum",
-    "values": [
-      "yes",
-      "all",
-      "no",
-      "remote",
-      "local"
-    ]
-  },
-  "loglevel": {
-    "type": "enum",
-    "values": [
-      "yes",
-      "all",
-      "no",
-      "remote",
-      "local"
-    ]
-  },
-  "logverbose": {
-    "type": "enum",
-    "values": [
-      "yes",
-      "all",
-      "no",
-      "remote",
-      "local"
     ]
   },
   "allowtcpforwarding": {
@@ -339,28 +250,7 @@
       "no"
     ]
   },
-  "authenticationmethods": {
-    "type": "enum",
-    "values": [
-      "yes",
-      "no"
-    ]
-  },
-  "streamlocalbindmask": {
-    "type": "enum",
-    "values": [
-      "yes",
-      "no"
-    ]
-  },
   "streamlocalbindunlink": {
-    "type": "enum",
-    "values": [
-      "yes",
-      "no"
-    ]
-  },
-  "fingerprinthash": {
     "type": "enum",
     "values": [
       "yes",
@@ -380,5 +270,10 @@
       "yes",
       "no"
     ]
+  },
+  "port": {
+    "type": "integer",
+    "min": 1,
+    "max": 65535
   }
 }

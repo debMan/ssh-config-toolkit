@@ -15,7 +15,7 @@ import { isSupportedLanguage } from './providers/utils'
 export async function openUserConfig(): Promise<void> {
   const home = homedir()
   if (!home) {
-    window.showErrorMessage('SSH Config Pro: could not determine your home directory.')
+    window.showErrorMessage('SSH Config Toolkit: could not determine your home directory.')
     return
   }
 
@@ -38,7 +38,7 @@ export async function openUserConfig(): Promise<void> {
 export async function setLanguageMode(langId: 'ssh-config' | 'sshd-config'): Promise<void> {
   const editor = window.activeTextEditor
   if (!editor) {
-    window.showInformationMessage('SSH Config Pro: open a file first.')
+    window.showInformationMessage('SSH Config Toolkit: open a file first.')
     return
   }
   await languages.setTextDocumentLanguage(editor.document, langId)
@@ -50,20 +50,20 @@ export async function setLanguageMode(langId: 'ssh-config' | 'sshd-config'): Pro
 export async function fixCasingNow(): Promise<void> {
   const editor = window.activeTextEditor
   if (!editor || !isSupportedLanguage(editor.document.languageId)) {
-    window.showInformationMessage('SSH Config Pro: open an SSH config file first.')
+    window.showInformationMessage('SSH Config Toolkit: open an SSH config file first.')
     return
   }
 
   const edits = buildEdits(editor.document)
   if (edits.length === 0) {
-    window.showInformationMessage('SSH Config Pro: all directive casing is already correct.')
+    window.showInformationMessage('SSH Config Toolkit: all directive casing is already correct.')
     return
   }
 
   const workspaceEdit = new WorkspaceEdit()
   workspaceEdit.set(editor.document.uri, edits)
   await workspace.applyEdit(workspaceEdit)
-  window.showInformationMessage(`SSH Config Pro: fixed casing on ${edits.length} directive(s).`)
+  window.showInformationMessage(`SSH Config Toolkit: fixed casing on ${edits.length} directive(s).`)
 }
 
 async function fileExists(path: string): Promise<boolean> {

@@ -1,8 +1,8 @@
 {
-  "name": "ssh-config-pro",
-  "displayName": "SSH Config Pro",
+  "name": "ssh-config-toolkit",
+  "displayName": "SSH Config Toolkit",
   "description": "All-in-one SSH config support: standalone syntax highlighting (any path), hover docs, keyword autocompletion, a configurable keyword linter, formatting, and Include-file links. No other extension required.",
-  "version": "1.2.1",
+  "version": "1.3.2",
   "publisher": "debman",
   "license": "MIT",
   "icon": "images/icon.png",
@@ -24,7 +24,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/debman/ssh-config-pro"
+    "url": "https://github.com/debman/ssh-config-toolkit"
   },
   "main": "./out/extension.js",
   "capabilities": {
@@ -96,37 +96,37 @@
     ],
     "commands": [
       {
-        "command": "ssh-config-pro.openUserConfig",
+        "command": "ssh-config-toolkit.openUserConfig",
         "title": "SSH Config: Open User Configuration (~/.ssh/config)"
       },
       {
-        "command": "ssh-config-pro.setLanguageMode",
+        "command": "ssh-config-toolkit.setLanguageMode",
         "title": "SSH Config: Treat Current File as SSH Config (client)"
       },
       {
-        "command": "ssh-config-pro.setSshdLanguageMode",
+        "command": "ssh-config-toolkit.setSshdLanguageMode",
         "title": "SSH Config: Treat Current File as SSHD Config (server)"
       },
       {
-        "command": "ssh-config-pro.fixCasing",
+        "command": "ssh-config-toolkit.fixCasing",
         "title": "SSH Config: Fix Directive Casing"
       }
     ],
     "configuration": {
-      "title": "SSH Config Pro",
+      "title": "SSH Config Toolkit",
       "properties": {
-        "sshConfigPro.format.indentSize": {
+        "sshConfigToolkit.format.indentSize": {
           "type": "integer",
           "default": 2,
           "minimum": 0,
           "markdownDescription": "Number of spaces used to indent directives under each `Host`/`Match` block when formatting."
         },
-        "sshConfigPro.lint.enabled": {
+        "sshConfigToolkit.lint.enabled": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Enable the keyword linter, which flags unknown SSH config directives."
         },
-        "sshConfigPro.lint.severity": {
+        "sshConfigToolkit.lint.severity": {
           "type": "string",
           "enum": [
             "error",
@@ -137,7 +137,7 @@
           "default": "warning",
           "markdownDescription": "Diagnostic severity used for unknown directives reported by the keyword linter."
         },
-        "sshConfigPro.lint.allowedKeywords": {
+        "sshConfigToolkit.lint.allowedKeywords": {
           "type": "array",
           "items": {
             "type": "string"
@@ -145,7 +145,12 @@
           "default": [],
           "markdownDescription": "Extra directive names the linter should treat as valid (e.g. custom or newer keywords), in addition to the built-in list."
         },
-        "sshConfigPro.fixCasing.onSave": {
+        "sshConfigToolkit.lint.validateValues": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Validate directive values against the official OpenSSH value sets (e.g. `PermitRootLogin` must be `yes`, `no`, `prohibit-password`, or `forced-commands-only`). Only directives with a fixed, documented set of accepted values are checked; everything else is left alone."
+        },
+        "sshConfigToolkit.fixCasing.onSave": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "On save, normalise SSH directive keywords to their canonical casing (e.g. `hOstNaME` → `HostName`), using the official OpenSSH keyword list. Only the leading directive on each line is changed; values are left untouched."

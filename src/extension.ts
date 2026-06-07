@@ -12,7 +12,7 @@ import {
 } from './providers'
 
 /**
- * Activates the SSH Config Pro extension.
+ * Activates the SSH Config Toolkit extension.
  */
 export function activate(context: ExtensionContext): void {
   // Eagerly load both client and server data (descriptions + authoritative
@@ -23,10 +23,10 @@ export function activate(context: ExtensionContext): void {
   const disposables: Disposable[] = []
 
   disposables.push(
-    commands.registerCommand('ssh-config-pro.openUserConfig', () => openUserConfig()),
-    commands.registerCommand('ssh-config-pro.setLanguageMode', () => setLanguageMode('ssh-config')),
-    commands.registerCommand('ssh-config-pro.setSshdLanguageMode', () => setLanguageMode('sshd-config')),
-    commands.registerCommand('ssh-config-pro.fixCasing', () => fixCasingNow()),
+    commands.registerCommand('ssh-config-toolkit.openUserConfig', () => openUserConfig()),
+    commands.registerCommand('ssh-config-toolkit.setLanguageMode', () => setLanguageMode('ssh-config')),
+    commands.registerCommand('ssh-config-toolkit.setSshdLanguageMode', () => setLanguageMode('sshd-config')),
+    commands.registerCommand('ssh-config-toolkit.fixCasing', () => fixCasingNow()),
   )
 
   // Language feature providers.

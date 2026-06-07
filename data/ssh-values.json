@@ -203,69 +203,6 @@
       "no"
     ]
   },
-  "loglevel": {
-    "type": "enum",
-    "values": [
-      "true",
-      "false",
-      "yes",
-      "no"
-    ]
-  },
-  "syslogfacility": {
-    "type": "enum",
-    "values": [
-      "true",
-      "false",
-      "yes",
-      "no"
-    ]
-  },
-  "logverbose": {
-    "type": "enum",
-    "values": [
-      "true",
-      "false",
-      "yes",
-      "no"
-    ]
-  },
-  "localforward": {
-    "type": "enum",
-    "values": [
-      "true",
-      "false",
-      "yes",
-      "no"
-    ]
-  },
-  "remoteforward": {
-    "type": "enum",
-    "values": [
-      "true",
-      "false",
-      "yes",
-      "no"
-    ]
-  },
-  "dynamicforward": {
-    "type": "enum",
-    "values": [
-      "true",
-      "false",
-      "yes",
-      "no"
-    ]
-  },
-  "permitremoteopen": {
-    "type": "enum",
-    "values": [
-      "true",
-      "false",
-      "yes",
-      "no"
-    ]
-  },
   "clearallforwardings": {
     "type": "enum",
     "values": [
@@ -273,30 +210,6 @@
       "false",
       "yes",
       "no"
-    ]
-  },
-  "host": {
-    "type": "enum",
-    "values": [
-      "inet",
-      "inet6",
-      "any"
-    ]
-  },
-  "match": {
-    "type": "enum",
-    "values": [
-      "inet",
-      "inet6",
-      "any"
-    ]
-  },
-  "escapechar": {
-    "type": "enum",
-    "values": [
-      "inet",
-      "inet6",
-      "any"
     ]
   },
   "addressfamily": {
@@ -337,15 +250,6 @@
       "autoask"
     ]
   },
-  "controlpersist": {
-    "type": "enum",
-    "values": [
-      "true",
-      "false",
-      "yes",
-      "no"
-    ]
-  },
   "hashknownhosts": {
     "type": "enum",
     "values": [
@@ -382,28 +286,6 @@
       "false",
       "yes",
       "no"
-    ]
-  },
-  "include": {
-    "type": "enum",
-    "values": [
-      "true",
-      "yes",
-      "false",
-      "no",
-      "force",
-      "auto"
-    ]
-  },
-  "ipqos": {
-    "type": "enum",
-    "values": [
-      "true",
-      "yes",
-      "false",
-      "no",
-      "force",
-      "auto"
     ]
   },
   "requesttty": {
@@ -452,26 +334,6 @@
       "no"
     ]
   },
-  "canonicaldomains": {
-    "type": "enum",
-    "values": [
-      "true",
-      "false",
-      "yes",
-      "no",
-      "always"
-    ]
-  },
-  "canonicalizepermittedcnames": {
-    "type": "enum",
-    "values": [
-      "true",
-      "false",
-      "yes",
-      "no",
-      "always"
-    ]
-  },
   "canonicalizehostname": {
     "type": "enum",
     "values": [
@@ -491,15 +353,6 @@
       "no"
     ]
   },
-  "streamlocalbindmask": {
-    "type": "enum",
-    "values": [
-      "true",
-      "false",
-      "yes",
-      "no"
-    ]
-  },
   "streamlocalbindunlink": {
     "type": "enum",
     "values": [
@@ -507,26 +360,6 @@
       "false",
       "yes",
       "no"
-    ]
-  },
-  "revokedhostkeys": {
-    "type": "enum",
-    "values": [
-      "true",
-      "false",
-      "yes",
-      "no",
-      "ask"
-    ]
-  },
-  "fingerprinthash": {
-    "type": "enum",
-    "values": [
-      "true",
-      "false",
-      "yes",
-      "no",
-      "ask"
     ]
   },
   "updatehostkeys": {
@@ -537,24 +370,6 @@
       "yes",
       "no",
       "ask"
-    ]
-  },
-  "addkeystoagent": {
-    "type": "enum",
-    "values": [
-      "true",
-      "false",
-      "yes",
-      "no"
-    ]
-  },
-  "identityagent": {
-    "type": "enum",
-    "values": [
-      "true",
-      "false",
-      "yes",
-      "no"
     ]
   },
   "enableescapecommandline": {

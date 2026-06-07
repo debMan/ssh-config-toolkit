@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { SSHOption } from './types'
+import type { ValueSpec } from './value-core'
 
 export type LanguageId = 'ssh-config' | 'sshd-config'
 
@@ -8,6 +9,7 @@ interface LanguageFiles {
   options: string
   keywords: string
   extra: string
+  values: string
 }
 
 const LANGUAGE_FILES: Record<LanguageId, LanguageFiles> = {
@@ -15,11 +17,13 @@ const LANGUAGE_FILES: Record<LanguageId, LanguageFiles> = {
     options: 'ssh-options.json',
     keywords: 'ssh-keywords.json',
     extra: 'ssh-keywords-extra.json',
+    values: 'ssh-values.json',
   },
   'sshd-config': {
     options: 'sshd-options.json',
     keywords: 'sshd-keywords.json',
     extra: 'sshd-keywords-extra.json',
+    values: 'sshd-values.json',
   },
 }
 
@@ -28,6 +32,7 @@ interface LanguageData {
   descByLower: Map<string, SSHOption>
   keywords: string[]
   canonicalByLower: Map<string, string>
+  valueSpecs: Map<string, ValueSpec>
 }
 
 const cache = new Map<LanguageId, LanguageData>()
@@ -40,7 +45,7 @@ function readJson<T>(extensionPath: string, file: string): T | undefined {
   try {
     return JSON.parse(readFileSync(join(extensionPath, 'data', file), { encoding: 'utf8' })) as T
   } catch (error) {
-    console.error(`[ssh-config-pro] Failed to read data/${file}:`, error)
+    console.error(`[ssh-config-toolkit] Failed to read data/${file}:`, error)
     return undefined
   }
 }
@@ -50,6 +55,7 @@ const EMPTY: LanguageData = {
   descByLower: new Map(),
   keywords: [],
   canonicalByLower: new Map(),
+  valueSpecs: new Map(),
 }
 
 /**
@@ -84,11 +90,17 @@ export function loadLanguage(extensionPath: string, langId: string): LanguageDat
     }
   }
 
+  const rawValues = readJson<Record<string, ValueSpec>>(extensionPath, files.values) ?? {}
+  const valueSpecs = new Map<string, ValueSpec>(
+    Object.entries(rawValues).map(([k, v]) => [k.toLowerCase(), v]),
+  )
+
   const data: LanguageData = {
     options,
     descByLower,
     keywords: [...canonicalByLower.values()],
     canonicalByLower,
+    valueSpecs,
   }
   cache.set(langId, data)
   return data
@@ -113,4 +125,9 @@ export function knownKeywordsLower(langId: string): Set<string> {
 /** Map of lower-cased directive name to canonical casing, for one language. */
 export function canonicalCasing(langId: string): Map<string, string> {
   return cache.get(langId as LanguageId)?.canonicalByLower ?? new Map()
+}
+
+/** Map of lower-cased directive name to its value spec, for one language. */
+export function valueSpecs(langId: string): Map<string, ValueSpec> {
+  return cache.get(langId as LanguageId)?.valueSpecs ?? new Map()
 }

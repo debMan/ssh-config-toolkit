@@ -22,7 +22,7 @@ export class SSHFormatProvider implements DocumentFormattingEditProvider {
 
   provideDocumentFormattingEdits(document: TextDocument): ProviderResult<TextEditType[]> {
     const indentSize = workspace
-      .getConfiguration('sshConfigPro.format')
+      .getConfiguration('sshConfigToolkit.format')
       .get<number>('indentSize', 2)
 
     const text = document.getText()
