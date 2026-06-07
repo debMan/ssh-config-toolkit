@@ -1,39 +1,45 @@
 # Changelog
 
-## 1.3.3
+## v1.3.4
+
+### Fixed
+
+- Updated the README
+
+## v1.3.3
 
 ### Fixed
 
 - Resize the icon
 
-## 1.3.2
+## v1.3.2
 
 ### Fixed
 
 - Updated the name to publish on VS Code Marketplace
-- Update the project icon.
-- Update the README
+- Updated the project icon.
+- Updated the README
 
-## 1.3.1
+## v1.3.1
 
 ### Fixed
 
 - Formatter no longer treats a blank line as the end of a `Host`/`Match` block. Blank lines inside a block are now removed and the directives after them keep their indentation (previously they were left flush against the left margin). A comment directly above a `Host`/`Match` line stays attached to it; a comment separated by a blank line introduces the next block.
 
-## 1.3.0
+## v1.3.0
 
 ### Added
 
 - **Value validation.** The linter now checks directive values against the official OpenSSH value sets — e.g. `PermitRootLogin maybe`, `Compression sometimes`, or a non-numeric `Port` are flagged with the list of accepted values. Only directives with a fixed, documented set of values (booleans, enumerations, and `Port`) are checked; free-form directives (paths, times, algorithm lists, `ForwardAgent`, `IdentityAgent`, etc.) are deliberately left alone to avoid false positives. Toggle with `sshConfigToolkit.lint.validateValues` (default on).
 - Value sets generated from the `multistate` tables in OpenSSH's `readconf.c` / `servconf.c` / `servconf.h` (`data/ssh-values.json`, `data/sshd-values.json`), with a `scripts/update-values.mjs` regen script.
 
-## 1.2.1
+## v1.2.1
 
 ### Changed
 
 - Updated `README.md`, preparing to publish to the VS Code Marketplace
 
-## 1.2.0
+## v1.2.0
 
 ### Added
 
@@ -41,13 +47,13 @@
 - Server directive data generated from the official `sshd_config(5)` man page (`data/sshd-keywords.json`, `data/sshd-options.json`), plus a curated deprecated/vendor list (`data/sshd-keywords-extra.json`) and a `scripts/update-sshd.mjs` regen script.
 - Command "SSH Config: Treat Current File as SSHD Config (server)".
 
-## 1.1.1
+## v1.1.1
 
 ### Changed
 
 - Renamed configuration keys from `ssh-config-toolkit.*` to `sshConfigToolkit.*` so the VS Code Settings UI shows a clean "Ssh Config Toolkit" breadcrumb instead of "Ssh-config-toolkit". Command ids, the extension id, and the language id are unchanged. If you had set any of these settings, update the key prefix to `sshConfigToolkit`.
 
-## 1.1.0
+## v1.1.0
 
 ### Added
 
@@ -58,7 +64,7 @@
 
 - The linter and casing fixer now share this single, official source of truth for directive names and casing.
 
-## 1.0.0
+## v1.0.0
 
 Initial release — a fork merging `ssh-config-syntax-highlighter` and `vscode-ssh-config-enhanced`.
 

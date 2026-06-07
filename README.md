@@ -3,10 +3,11 @@
 
 <div>
 <h1>SSH Config Toolkit</h1>
-<p>All-in-one editing support for SSH configuration files, both client and server, in VS Code. The idea is inspired by two following projects, that merges and fixes two existing extensions.</p>
+<p>All-in-one editing support for SSH configuration files, both client and server, in VS Code: standalone syntax highlighting (any path), hover docs, keyword autocompletion, a configurable keyword linter, formatting, and Include-file links. No other extension required.</p>
 </div>
 
 <br/>
+<p>The idea is inspired by two following projects, that merges and fixes two existing extensions.</p>
 
 - **[ssh-config-syntax-highlighter](https://github.com/mousavian/ssh-config-syntax-highlighter)** by R. Mousavian — a solid, self-contained syntax highlighter.
 - **[vscode-ssh-config-enhanced](https://github.com/jamief/vscode-ssh-config-enhanced)** by jamief — hover docs, completion, formatting, and Include links.

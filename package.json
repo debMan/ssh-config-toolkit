@@ -2,7 +2,7 @@
   "name": "ssh-config-toolkit",
   "displayName": "SSH Config Toolkit",
   "description": "All-in-one SSH config support: standalone syntax highlighting (any path), hover docs, keyword autocompletion, a configurable keyword linter, formatting, and Include-file links. No other extension required.",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "publisher": "debman",
   "license": "MIT",
   "icon": "images/icon.png",
