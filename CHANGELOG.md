@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.3
+
+### Fixed
+
+- Resize the icon
+
 ## 1.3.2
 
 ### Fixed
